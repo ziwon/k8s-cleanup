@@ -1,7 +1,7 @@
 FROM alpine
 
-ENV ETCD_VERSION 3.1.4
-ENV KUBE_VERSION 1.7.8
+ENV ETCD_VERSION 3.3.9
+ENV KUBE_VERSION 1.10.11
 
 RUN apk add --update bash curl docker \
     && rm -rf /var/cache/apk/*
@@ -11,7 +11,7 @@ RUN cd /usr/local/bin \
     && chmod 755 /usr/local/bin/kubectl
 
 RUN cd /tmp \
-    && curl -OL https://github.com/coreos/etcd/releases/download/v${ETCD_VERSION}/etcd-v${ETCD_VERSION}-linux-amd64.tar.gz \ 
+    && curl -OL https://github.com/coreos/etcd/releases/download/v${ETCD_VERSION}/etcd-v${ETCD_VERSION}-linux-amd64.tar.gz \
     && tar zxf etcd-v${ETCD_VERSION}-linux-amd64.tar.gz \
     && cp etcd-v${ETCD_VERSION}-linux-amd64/etcdctl /usr/local/bin/etcdctl \
     && rm -rf etcd-v${ETCD_VERSION}-linux-amd64* \
